@@ -4,6 +4,37 @@ const app = express();
 
 app.use(morgan('common'));
 
+let topTenMovies = [{
+    title: 'Avengers: Endgame'
+},
+{
+    title: 'Justice Leage: Zack Snyder Cut'
+},
+{
+    title: 'Godzilla: King Of Monsters'
+},
+{
+    title: 'Wonder Woman'
+},
+{
+    title: 'GodFather'
+},
+{
+    title: 'Fight Club'
+},
+{
+    title: 'Kill Bill'
+},
+{
+    title: 'Purple Fiction'
+},
+{
+    title: 'All about Eve'
+},
+{
+    title: 'The Apartment'
+}];
+
 //GET request
 
 app.get('/', (req, res) => {
