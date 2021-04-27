@@ -7,4 +7,98 @@
         <h1>Documentation Page</h1>
         <p>This is a work in progress for my Movie API</p>
     </body>
+    <table>
+        <thead>
+        <tr>
+            <th>Request</th>
+            <th>URL</th>
+            <th>HTTP Method</th>
+            <th>Request body format data</th>
+            <th>Request body format data</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Get all list of Movies</td>
+            <td>/movies</td>
+            <td>GET</td>
+            <td></td>
+            <td>None</td>
+            <td>A JSON object holding data about all the movies</td>
+        </tr>
+        <tr>
+            <td>Get data about (description, genre, director, URL, whether it's featured or not) about a single movie by title to the user</td>
+            <td>GET</td>
+            <td>/movies/[Title]</td>
+            <td>/movies/:Title</td>
+            <td>None</td>
+            <td>A JSON object holding data about a single movie containing a title, description, genre, director, image, and featured<br><br>
+                Example: <br>
+                {
+                    "title": "Avengers: End Game",
+                    "description":"Avengers: End Game came out 2019, this is based off of the characters in the Marvel Universe",
+                    "genre": "Action/scifi",
+                    "director": "Joe Russo & Anthony Russo",
+                    "image": "",
+                    "featured": "true"
+                }
+            </td><br>
+        </tr>
+        <tr>
+            <td>Return data about genre (description) by name/title (e.g. "Thriller")</td>
+            <td>GET</td>
+            <td>/movies/genre/[genre]</td>
+            <td>GET</td>
+            <td>/movies/genre/:name</td>
+            <td>None</td>
+        </tr>
+        <tr>
+            <td>Return data about a director (bio, birth year, death year) by name
+                <td>GET</td>
+                <td>/movies/directors/[name]</td>
+                <td>/movies/directors/:name</td>
+                <td>None</td>
+                <td>JSON holding data about director</td>
+            </td>
+        </tr>
+        <tr>
+            <td>Allow new users to register</td>
+            <td>POST</td>
+            <td>/users</td>
+            <td>None</td>
+            <td>A JSON using data for registration</td>
+
+        </tr>
+        <tr>
+            <td>Allow users to update their user info(username)</td>
+            <td>PUT</td>
+            <td>/user/[username]</td>
+            <td>/user/:username</td>
+            <td>JSON holding data about the users information</td>
+         </tr>
+         <tr>
+             <td>Allow users to add a movie to their list of favorites (showing only a text that a movie has been added)</td>
+             <td>POST</td>
+             <td>/users/[username]/movies/[movieID]</td>
+             <td>/users/[username]/movies/:movieID</td>
+             <td>None</td>
+             <td>A JSON object holding data about all your favourite movie</td>
+         </tr>
+         <tr>
+             <td>Allow users to remove a movie from their list of favorites (showing only a text that a movie has been removed—more on this later)</td>
+             <td>DELETE</td>
+             <td>/user/[username]/movies/[movieID]</td>
+             <td>/user/[username]/movies/:movieID</td>
+             <td>A JSON object hooding data about the current favorite list</td>
+         </tr>
+         <tr>
+             <td>Allow existing users to deregister (showing only a text that a user email has been removed—more on this later)</td>
+             <td>DELETE</td>
+             <td>user/[name]</td>
+             <td>user/:name</td>
+             <td>None</td>
+             <td>Sends message of account deleted</td>
+         </tr>
+        </tbody>
+    </table>
 </html>
