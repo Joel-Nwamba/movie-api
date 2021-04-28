@@ -5,7 +5,7 @@ const uuid = require('uuid');
 const app = express();
 
 app.get('/', (req, res) => {
-    res.send('Welcome to myFlix');
+    res.send('Welcome to myFlix where you can check out all of your movies favourite');
 });
 
 app.use(express.static('public'));
@@ -66,11 +66,10 @@ let topTenMovies = [{
 
 //users information
 
-let user  = [
-    {
-        user: 'JoelNwamba',
-        email: 'Joel.nwamba@gmail.com',
-        password: 'joel23'
+let user = [{
+        username: 'testing1234',
+        password: 'test12',
+        email: 'test@test.com'
     }
 ];
 
@@ -109,10 +108,10 @@ app.get('/movies/director/:name', (req, res) => {
 });
 
 //Allow users to register 
-app.post('/users', (res, req) => {
+app.post('/users', (req, res) => {
     const newRegistration = req.body;
     
-    if(!newRegistration.username) {
+     if(!newRegistration.username) {
         res.status(404).send('username is needed');
     } else if(!newRegistration.email){
         res.status(404).send('email is required to proceed');
@@ -123,15 +122,16 @@ app.post('/users', (res, req) => {
     } else {
         newRegistration.id = uuid.v4();
         user.push(newRegistration)
-        res.status(201).send('Welcome to your new account');
+        res.status(201).send(`Sucess post welcome ${newRegistration.username}`);
     }
+    
 });
 
 //Put allow users to update their user information
 
 app.put('/users/:username', (res, req) => {
     let updateUser = user.find((username)=> {
-        return username.user === req.params.user
+        return username.username === req.params.user
     });
     if(updateUser){
         username.user = req.params.user
