@@ -108,7 +108,7 @@ app.get('/movies/director/:name', (req, res) => {
 });
 
 //Allow users to register 
-app.post('/users', (req, res) => {
+app.post('/user', (req, res) => {
     const newRegistration = req.body;
     
      if(!newRegistration.username) {
@@ -129,12 +129,12 @@ app.post('/users', (req, res) => {
 
 //Put allow users to update their user information
 
-app.put('/users/:username', (res, req) => {
-    let updateUser = user.find((username)=> {
-        return username.username === req.params.user
+app.put('/user/:Username', (res, req) => {
+    let updateUser = user.find((user)=> {
+        return user.username === req.params.Username
     });
     if(updateUser){
-        username.user = req.params.user
+        user.username = req.params.Username
     } else if(updateUser.password){
         res.status(404).send('update a new password');
     } else {
@@ -143,7 +143,7 @@ app.put('/users/:username', (res, req) => {
 });
 
 //allow users to add movie to their list of favourite
-app.post('/users/:username/favorite/:movieID', (res, req) => {
+app.post('/users/:Username/favorite/:movieID', (res, req) => {
     let favoriteMovie = req.body
     if(favoriteMovie === '') {
         res.status(404).send('The list is empty');
@@ -155,7 +155,7 @@ app.post('/users/:username/favorite/:movieID', (res, req) => {
 
 //allow users to remove movies from the list
 
-app.delete('/users/:username/favorite/:movieID', (res, req) => {
+app.delete('/users/:Username/favorite/:movieID', (res, req) => {
     let deleteMovie = favorite.find((movie) => {
         return movie.movieID !== req.params.movieID
     });
@@ -168,7 +168,7 @@ app.delete('/users/:username/favorite/:movieID', (res, req) => {
 });
 
 //request to delete username
-app.delete('/users/:username', (res, req) => {
+app.delete('/users/:Username', (res, req) => {
     const newRegistration = req.body;
     if(!newRegistration) {
         res.status(404).send(req.body + ' is not provided');
